@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'rename'
+gem 'unicorn'
 group :development do
   # gem 'sprockets_better_errors'
   gem 'better_errors'
