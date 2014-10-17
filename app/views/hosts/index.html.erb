@@ -1,0 +1,23 @@
+<h1>Listing hosts</h1>
+
+<%= link_to 'New host', new_host_path %>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Twitter</th>
+    <th>Bio URL</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @hosts.each do |host| %>
+    <tr>
+      <td><%= host.name %></td>
+      <td><%= host.twitter %></td>
+      <td><%= host.bio_url %></td>
+    <td><%= link_to 'Show', host_path(host) %></td>
+    <td><%= link_to 'Edit', edit_host_path(host) %></td>
+    <td><%= link_to 'Destroy', host_path(host), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

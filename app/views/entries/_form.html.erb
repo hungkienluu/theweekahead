@@ -1,0 +1,80 @@
+<%= form_for @entry do |f| %>
+  <% if @entry.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@entry.errors.count, "error") %> prohibited
+      this entry from being saved:</h2>
+    <ul>
+    <% @entry.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <p>
+    <label for="show_or_game">Is this a show or a game?</label>
+    <select id="show_or_game">
+      <%= options_for_select(['','Show', 'Game']) %>
+    </select>
+  </p>
+  <div class = "form_wrap_2">
+    <p class="show_group">
+      <%= f.label :show_name %><br>
+      <%= f.collection_select :show_name, Show.all, :id, :name, :include_blank => true %>
+    </p>
+
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+   
+    <p>
+      <%= f.label :announcer1, 'Host/Announcer #1' %><br>
+      <%= f.collection_select :announcer1, Host.all, :id, :name, :include_blank => true %>
+    </p>
+
+    <p>
+      <%= f.label :announcer2, 'Host/Announcer #2' %><br>
+      <%= f.collection_select :announcer2, Host.all, :id, :name, :include_blank => true %>
+    </p>
+
+      <p>
+      <%= f.label :announcer3, 'Host/Announcer #3' %><br>
+      <%= f.collection_select :announcer3, Host.all, :id, :name, :include_blank => true %>
+    </p>
+
+      <p>
+      <%= f.label :announcer4, 'Host/Announcer #4' %><br>
+      <%= f.collection_select :announcer4, Host.all, :id, :name, :include_blank => true %>
+    </p>
+
+
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+
+    <p class = "game_group">
+      <%= f.label :away_team %><br> 
+      <%= f.collection_select :away_team, School.all, :id, :name %>
+    <p>
+
+    <p class = "game_group">
+      <%= f.label :home_team %><br> 
+      <%= f.collection_select :home_team, School.all, :id, :name %>
+    <p>
+
+    <p class = "game_group">
+      <%= f.label :hash_tag %><br>
+      <%= f.text_area :hash_tag %>
+    </p>
+
+    <p class = "game_group">
+      <%= f.label :event_url %><br>
+      <%= f.text_area :event_url %>
+    </p>
+  </div>
+
+    <%= f.submit %>
+  </p>
+<% end %>

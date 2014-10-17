@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @entry.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @entry.description %>
+</p>
+
+<p>
+  <strong>Away School:</strong>
+  <%= @entry.away_school_va %>
+</p>
+
+<p>
+  <strong>Home School:</strong>
+  <%= @entry.home_school_va %>
+</p>
+
+<%= link_to 'Back', entries_path %>
+| <%= link_to 'Edit', edit_entry_path(@entry) %>

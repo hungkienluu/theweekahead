@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @host.name %>
+</p>
+ 
+<p>
+  <strong>Twitter:</strong>
+  <%= @host.twitter %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @host.bio_url %>
+</p>
+
+<%= link_to 'Back', hosts_path %>
+| <%= link_to 'Edit', edit_host_path(@host) %>

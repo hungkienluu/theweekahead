@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @school.name %>
+</p>
+ 
+<p>
+  <strong>Logo:</strong>
+  <%= @school.logo %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @school.abbreviation %>
+</p>
+
+<%= link_to 'Back', schools_path %>
+| <%= link_to 'Edit', edit_school_path(@school) %>
