@@ -34,4 +34,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Raises compile errors for production in development
+  config.assets.raise_production_errors = true
 end
