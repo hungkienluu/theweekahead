@@ -14,10 +14,10 @@
   <p>
     <label for="show_or_game">Is this a show or a game?</label>
     <select id="show_or_game">
-      <%= options_for_select(['','Show', 'Game']) %>
+      <%= options_for_select(['','Show', 'Game'], @entry.show_name.present? ? "Show" : @entry.event_url.present? ? "Game" : '') %>
     </select>
   </p>
-  <div class = "form_wrap_2">
+  <div class = "<%= @entry.show_name.blank? & @entry.event_url.blank? ? "form_wrap_2" : "" %>">
     <p class="show_group">
       <%= f.label :show_name %><br>
       <%= f.collection_select :show_name, Show.all, :id, :name, :include_blank => true %>
