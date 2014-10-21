@@ -47,7 +47,7 @@ end
 
 private
   def entry_params
-    params.require(:entry).permit(:title, :description, :away_team, :home_team, :event_url, :hash_tag, :announcer1, :announcer2, :announcer3, :announcer4, :announcer1_twitter, :announcer2_twitter, :announcer3_twitter, :announcer4_twitter, :show_name)
+    params.require(:entry).permit(:title, :description, :away_team, :home_team, :event_url, :hash_tag, :announcer1, :announcer2, :announcer3, :announcer4, :announcer1_twitter, :announcer2_twitter, :announcer3_twitter, :announcer4_twitter, :show_name, :show_time)
   end
 
 end

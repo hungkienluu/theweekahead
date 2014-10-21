@@ -7,7 +7,15 @@ class Entry < ActiveRecord::Base
   end
 
   def home_school_va
-    School.find(self.home_team).name unless self.away_team.blank?
+    School.find(self.home_team).name unless self.home_team.blank?
+  end
+
+  def school_name(school)
+    School.find(school).name
+  end
+
+  def school_logo(school)
+    School.find(school).logo
   end
 
   def show_name_va
@@ -23,15 +31,15 @@ class Entry < ActiveRecord::Base
   end
 
   def host_name(announcer)
-    Host.find(announcer).name
+    Host.find(announcer).name unless announcer.blank?
   end
 
   def host_twitter(announcer)
-    Host.find(announcer).twitter
+    Host.find(announcer).twitter unless announcer.blank?
   end
 
   def host_bio_url(announcer)
-    Host.find(announcer).bio_url
+    Host.find(announcer).bio_url unless announcer.blank?
   end
 
 end

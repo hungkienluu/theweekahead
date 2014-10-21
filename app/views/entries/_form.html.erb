@@ -21,6 +21,7 @@
     <p class="show_group">
       <%= f.label :show_name %><br>
       <%= f.collection_select :show_name, Show.all, :id, :name, :include_blank => true %>
+      <small><%= link_to 'Add new show', new_show_path, :target => "_blank" %></br></small>
     </p>
 
     <p>
@@ -30,7 +31,8 @@
    
     <p>
       <%= f.label :announcer1, 'Host/Announcer #1' %><br>
-      <%= f.collection_select :announcer1, Host.all, :id, :name, :include_blank => true %>
+      <%= f.collection_select :announcer1, Host.all, :id, :name, :include_blank => true %><br>
+      <small><%= link_to 'Add new host', new_host_path, :target => "_blank" %></br></small>
     </p>
 
     <p>
@@ -48,6 +50,10 @@
       <%= f.collection_select :announcer4, Host.all, :id, :name, :include_blank => true %>
     </p>
 
+    <p>
+      <%= f.label :show_time %><br>
+      <%= f.text_area :show_time, :placeholder => "Pac-12 Bay Area / Pac-12 Mountain - 6 p.m. PT"%>
+    </p>
 
     <p>
       <%= f.label :description %><br>
@@ -56,12 +62,13 @@
 
     <p class = "game_group">
       <%= f.label :away_team %><br> 
-      <%= f.collection_select :away_team, School.all, :id, :name %>
+      <%= f.collection_select :away_team, School.all, :id, :name, :include_blank => true, :prompt => "Please select" %>
+      <small><%= link_to 'Add new school', new_school_path, :target => "_blank" %></br></small>
     <p>
 
     <p class = "game_group">
       <%= f.label :home_team %><br> 
-      <%= f.collection_select :home_team, School.all, :id, :name %>
+      <%= f.collection_select :home_team, School.all, :id, :name, :include_blank => true, :prompt => "Please select" %>
     <p>
 
     <p class = "game_group">

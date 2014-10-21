@@ -24,22 +24,70 @@
 <pre>
 <xmp>
  <% @entries.each do |entry| %>
-    <div class="SCHOOL_WRAP"><%= entry.title %></div>
-    <%= entry.description %>
-    <%= entry.away_school_va %>
-    <%= entry.home_school_va %>
-    <%= entry.hash_tag %>
-    <%= entry.event_url %>
-    <%= entry.announcer1 unless entry.announcer1.blank? %>
-    <%= entry.announcer1_twitter unless entry.announcer1_twitter.blank? %>
-    <%= entry.announcer2_twitter unless entry.announcer2_twitter.blank? %>
-    <%= entry.announcer3_twitter unless entry.announcer3_twitter.blank? %>
-    <%= entry.announcer4_twitter unless entry.announcer4_twitter.blank? %>
-    <%= entry.host_twitter(entry.announcer1) unless entry.announcer1.blank? %>
+    <!-- ************************************* START ENTRY ************************************* -->
+    <hr />
+    <div class="PROGRAM_WRAP">
+      <div class="SHOW_LOGO_WRAP">
+        <%= entry.show_name_va.present? ? image_tag("#{entry.show_image}") : "" %>
+      </div>
+      
+      <div class="SCHOOL_LOGO_WRAP">
+        <% if entry.away_team.present? %>
+          <%= image_tag("#{entry.school_logo(entry.away_team)}", class: "SCHOOL_LOGO", alt:"#{entry.school_name(entry.away_team)}")%>
+        <% else %>
+          &nbsp
+        <% end %>
+      </div>
+    
+      <div class="PROGRAM_TITLE_INSIDE">
+        <p>
+          <strong>
+            <% if entry.event_url.present? %>
+              <%= link_to("#{entry.title}", "#{entry.event_url}") %>
+            <% else %>
+              <%= link_to("#{entry.title}", "#{entry.show_url}") %>
+            <% end %>
+          </strong>
+          
+          <% if entry.hash_tag.present? %>
+            <br />
+            <%= link_to("##{entry.hash_tag}", "https://twitter.com/hashtag/#{entry.hash_tag}?src=hash") %>
+          <% end %>
+            <br />
+            <%= entry.show_time %>
+          
+          Announcers:
+            <% if entry.announcer1.present? %>
+              <%= entry.host_bio_url(entry.announcer1).blank? ? "#{entry.host_name(entry.announcer1)}" : link_to("#{entry.host_name(entry.announcer1)}","#{entry.host_bio_url(entry.announcer1)}") %> <%= link_to("(#{entry.host_twitter(entry.announcer1)})", "https://www.twitter.com/#{entry.host_twitter(entry.announcer1)}") unless entry.host_twitter(entry.announcer1).blank? %>
+            <% end %>
 
-    <div class="SHOW_WRAP"><%= entry.show_name_va %></div>
-    <%= entry.show_image %>
-    <%= entry.show_url %>
+            <% if entry.announcer2.present? %>
+              , <%= entry.host_bio_url(entry.announcer2).blank? ? "#{entry.host_name(entry.announcer2)}" : link_to("#{entry.host_name(entry.announcer2)}", "#{entry.host_bio_url(entry.announcer2)}") %> <%= link_to("(#{entry.host_twitter(entry.announcer2)})", "https://www.twitter.com/#{entry.host_twitter(entry.announcer2)}") unless entry.host_twitter(entry.announcer2).blank? %>
+            <% end %>
+
+            <% if entry.announcer3.present? %>
+              , <%= entry.host_bio_url(entry.announcer3).blank? ? "#{entry.host_name(entry.announcer3)}" : link_to("#{entry.host_name(entry.announcer3)}", "#{entry.host_bio_url(entry.announcer3)}") %> <%= link_to("(#{entry.host_twitter(entry.announcer3)})", "https://www.twitter.com/#{entry.host_twitter(entry.announcer3)}") unless entry.host_twitter(entry.announcer3).blank? %>
+            <% end %>
+
+            <% if entry.announcer4.present? %>
+              , <%= entry.host_bio_url(entry.announcer4).blank? ? ", #{entry.host_name(entry.announcer4)}" : link_to("#{entry.host_name(entry.announcer4)}", "#{entry.host_bio_url(entry.announcer4)}") %> <%= link_to("(#{entry.host_twitter(entry.announcer4)})", "https://www.twitter.com/#{entry.host_twitter(entry.announcer4)}") unless entry.host_twitter(entry.announcer4).blank? %>
+            <% end %>
+        </p>
+      </div>
+  
+      <div class="SCHOOL_LOGO_WRAP">
+        <% if entry.home_team.present? %>
+          <%= image_tag("#{entry.school_logo(entry.home_team)}", alt:"#{entry.school_name(entry.home_team)}", class:"SCHOOL_LOGO")%>
+        <% else %>
+          &nbsp
+        <% end %>
+      </div>
+
+      <% if entry.description.present? %>
+        <p class="PROGRAM_DESCRIPTION"><%= entry.description %></p>
+      <% end %>
+    </div>
+    <!-- ************************************* END ENTRY *************************************** -->
 
   <% end %>
 </xmp>
